@@ -38,7 +38,7 @@ def getJESSIONID():
     }
     responseRes = requests.get(Url, data=data, headers=header)
     jid = responseRes.headers['Set-Cookie'].split(';')[0]
-    print(jid)
+    print('jid')
     PROCESS.append(jid)
     return jid
 
@@ -92,7 +92,7 @@ def getCode1(jid):
     responseRes = requests.get(Url, headers=header, allow_redirects=False)
     code = responseRes.headers['Location'].split('?')[1].split('=')[1].split('&')[0]
     x = "code1:" + code
-    print(x)
+    print('code1')
     PROCESS.append(x)
     return code
 
@@ -108,9 +108,9 @@ def getWxfwdttoken(jid, code):
     }
     postUrl = "http://xy.4009955.com/wxfwdt-api/layout_01_01/login/loginYdBycode"
     responseRes = requests.post(postUrl, json=data, headers=header)
-    print(responseRes.content.decode().split('"'))
+    # print(responseRes.content.decode().split('"'))
     x = "wxtoken:" + responseRes.content.decode().split('"')[21]
-    print(x)
+    print('wxtoken')
     PROCESS.append(x)
     return responseRes.content.decode().split('"')[21]
 
@@ -124,7 +124,7 @@ def getCode2(jid, wxtoken):
     responseRes = requests.get(postUrl, headers=header, allow_redirects=False)
     code = responseRes.headers['Location'].split('?')[1].split('=')[1].split('&')[0]
     x = "code2:" + code
-    print(x)
+    print('code2')
     PROCESS.append(x)
     return code
 
@@ -139,9 +139,9 @@ def getJktbtoken(jid, wxtoken, code):
     }
     postUrl = "http://xy.4009955.com/jktb-api/jktb_01_01/login/loginYdBycode"
     responseRes = requests.post(postUrl, json=data, headers=header)
-    print(responseRes.content.decode().split('"'))
+    # print(responseRes.content.decode().split('"'))
     x = "jktoken:" + responseRes.content.decode().split('"')[21]
-    print(x)
+    print('jktoken')
     PROCESS.append(x)
     return responseRes.content.decode().split('"')[21]
 
@@ -154,7 +154,7 @@ def getTodayForms(jid, wxtoken, jktoken):
     postUrl = "http://xy.4009955.com/jktb-api/jktb_01_01/homePage/getToadyForms"
     responseRes = requests.post(postUrl, headers=header)
     x = "todayid:" + responseRes.content.decode().split('"')[17]
-    print(x)
+    print('todayid')
     PROCESS.append(x)
     return responseRes.content.decode().split('"')[17]
 
