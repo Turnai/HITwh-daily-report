@@ -2,8 +2,8 @@
 
 HITwh 工软系统 <sup>[访问入口](http://xy.4009955.com/jktb/)</sup> 上报脚本
 
-感谢 [@Cheryio](https://github.com/Cheryio) 提供[原始脚本](https://github.com/Cheryio/GRXY_autoSign)和 idea。
-ta的博客：[lyri.fun](https://www.lyri.fun/posts/cab45a56/)
+感谢 [@Cheryio](https://github.com/Cheryio) 提供[原始脚本](https://github.com/Cheryio/GRXY_autoSign)和 [idea](https://www.lyri.fun/posts/cab45a56/)。
+TA的博客：[lyri.fun](https://www.lyri.fun/)
 
 感谢 [HITsz-daily-report](https://github.com/chh13502/HITsz-daily-report)
 
@@ -17,6 +17,15 @@ ta的博客：[lyri.fun](https://www.lyri.fun/posts/cab45a56/)
 
 
 ## 使用方法
+### 关于OPENID([来源](https://www.lyri.fun/posts/cab45a56/))
+进入**工软校园公众号**，点击**应用中心**，切换到**我的**，如果你是已登录的状态就退出登录，然后跳转进入到这个登录界面
+![获取 openid 的步骤 1](./how-to-enable-actions/image/get_openid1.png)
+
+点**复制链接**，然后查看链接的内容
+![获取 openid 的步骤 2](./how-to-enable-actions/image/get_openid2.png)
+
+这样就得到了你的openid
+
 ### 本地运行脚本（Windows）
 1. 安装Python环境
 2. `pip install -r requirements.txt` 安装依赖
@@ -42,5 +51,4 @@ ta的博客：[lyri.fun](https://www.lyri.fun/posts/cab45a56/)
    你可以打开 GitHub Actions 执行的全局邮件通知 <sup>[如何开启？](./how-to-enable-actions/#设置邮件提醒)</sup>，包括成功或失败信息
 
 ## 声明
-
 用户使用过程中输入的账户、密码等信息仅用做登陆认证凭据，脚本未对任何个人信息与登陆凭据进行非法留存、转发等操作，尽情放心使用。欢迎核查
