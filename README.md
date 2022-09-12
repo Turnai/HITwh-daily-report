@@ -2,11 +2,12 @@
 
 HITwh 工软系统 <sup>[访问入口](http://xy.4009955.com/jktb/)</sup> 上报脚本
 
-感谢 @Cheryio 提供原始脚本和 idea。
-源地址：[github](https://github.com/Cheryio/GRXY_autoSign)
-原博客：https://www.lyri.fun/posts/cab45a56/
+感谢 [@Cheryio](https://github.com/Cheryio) 提供原始脚本和 idea。
 
-~~私货环节：感谢 [HITsz-daily-report](https://github.com/chh13502/HITsz-daily-report)~~
+源地址：[github](https://github.com/Cheryio/GRXY_autoSign)
+原博客：[lyri.fun](https://www.lyri.fun/posts/cab45a56/)
+
+感谢 [HITsz-daily-report](https://github.com/chh13502/HITsz-daily-report)
 
 ## 免责声明
 
@@ -15,3 +16,6 @@ HITwh 工软系统 <sup>[访问入口](http://xy.4009955.com/jktb/)</sup> 上报
 ##### 如果有发热状况，请及时私信通知导员！！！！
 #### 如果有发热状况，请及时私信通知导员！！！！
 ### 如果有发热状况，请及时私信通知导员！！！！
+
+## TODO
+GitHub Action
