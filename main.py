@@ -24,6 +24,7 @@ OPENID = ""  # openid
 class ReportException(Exception):
     """上报异常错误信息"""
 
+
 # 获取JESSIONID
 def getJESSIONID():
     header = {
@@ -219,9 +220,7 @@ def submit(jid, jktoken, todayid):
 
 
 def tianbao():
-    maxloop = 3
-    thisloop = 0
-    while thisloop < maxloop:
+    for _ in range(3):
         try:
             jid = getJESSIONID()
             yzm = getYzm(jid)
@@ -232,18 +231,20 @@ def tianbao():
             jktoken = getJktbtoken(jid, wxtoken, jkcode)
             todayid = getTodayForms(jid, wxtoken, jktoken)
             submit(jid, jktoken, todayid)
-        except IndexError:
+        except Exception as e:
             PROCESS.append("❌ fail,retrying......\n")
-            thisloop += 1
+            PROCESS.extend(list(e.args))
+            print(e.args)
             time.sleep(5)
-            continue
         else:
             PROCESS.append("✔ success\n填报已完成")
             res = '\n'.join(PROCESS)
             with open("result.txt", "w", encoding="utf-8") as Result:
                 Result.write(res)
             return
-    raise ReportException("3 times failed. Report end.")
+
+        raise ReportException("3 times failed. Report end.")
+
 
 if __name__ == '__main__':
     parser = ArgumentParser(description='HITwh疫情上报')
