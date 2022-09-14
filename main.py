@@ -3,7 +3,6 @@ import time
 import requests
 import base64
 import ddddocr
-# import yagmail
 from datetime import datetime
 from argparse import ArgumentParser
 
@@ -22,9 +21,8 @@ XUEYUAN = "计算机科学与技术学院"  # 学院
 OPENID = ""  # openid
 
 
-# QQMAIL = ""  # 负责发送邮件的QQ邮箱
-# MAILAUTH = ""  # QQ邮箱登录 POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务 的验证码
-# RECEIVEMAIL = ""  # 负责接受邮件的邮箱
+class ReportException(Exception):
+    """上报异常错误信息"""
 
 # 获取JESSIONID
 def getJESSIONID():
@@ -213,45 +211,6 @@ def submit(jid, jktoken, todayid):
         "tbrq": TIME, "mrtbjzsj": "22:10", "xm": XM, "zzjgmc": XUEYUAN,
         "bdtbslid": todayid, "bdmc": "学生每日健康填报"}
 
-    # data = {
-    #     "list": [{"zjlx": 3, "list": [{"column": "c001", "content": "校内"}, {"column": "c002", "content": "校外"}],
-    #               "value": ["c002"]}, {"zjlx": 5, "list": [{"column": "gSheng", "content": PROVINCE},
-    #                                                        {"column": "gShi", "content": CITY},
-    #                                                        {"column": "gQu", "content": DISTRICT}], "value": ""},
-    #              {"zjlx": 3, "list": [{"column": "c010", "content": "37.2℃及以下"},
-    #                                   {"column": "c012", "content": "37.3℃-38.4℃（请及时就医并在3天内进行3次核酸检测）"},
-    #                                   {"column": "c013", "content": "38.5℃及以上（请及时就医并在3天内进行3次核酸检测）"}],
-    #               "value": ["c010"]}, {"zjlx": 3, "list": [{"column": "c014", "content": "没有出现不适症状"},
-    #                                                        {"column": "c015", "content": "乏力、咳嗽、流涕等感冒症状"},
-    #                                                        {"column": "c016", "content": "呕吐、腹泻等消化道不适"},
-    #                                                        {"column": "c017", "content": "与传染病无关的不适症状"}],
-    #                                    "value": ["c014"]},
-    #              {"zjlx": 3, "list": [{"column": "c018", "content": "未被隔离"},
-    #                                   {"column": "c019",
-    #                                    "content": "居家隔离观察（需要医护人员上门核酸采样）"},
-    #                                   {"column": "c020",
-    #                                    "content": "校外集中隔离点隔离观察"}],
-    #               "value": ["c018"]}, {"zjlx": 3, "list": [
-    #             {"column": "c003", "content": "未接种"}, {"column": "c004", "content": "已接种第一针"},
-    #             {"column": "c005", "content": "已接种第二针"}, {"column": "c006", "content": "已接种第三针"}],
-    #                                    "value": ["c005"]},
-    #              {"zjlx": 3, "list": [{"column": "c007", "content": "绿码"},
-    #                                   {"column": "c008", "content": "灰码（请在到威海后第1、第2、第4天各完成1次核酸检测）"},
-    #                                   {"column": "c009", "content": "黄码"}, {"column": "c010", "content": "红码"}],
-    #               "value": ["c007"]}, {"zjlx": 3, "list": [{"column": "c028", "content": "未出校"},
-    #                                                        {"column": "c029",
-    #                                                         "content": "出校，未离开威海（须填报出行方式和外出地点）"},
-    #                                                        {"column": "c030", "content": "离威"}], "value": ["c028"]},
-    #              {"zjlx": 2, "list": [{"column": "c031", "content": ""}], "value": ""},
-    #              {"zjlx": 3, "list": [{"column": "c021", "content": "是"}, {"column": "c022", "content": "否"}],
-    #               "value": ["c022"]}, {"zjlx": 1, "list": [{"column": "c023", "content": ""}], "value": ""},
-    #              {"zjlx": 3, "list": [{"column": "c024", "content": "是"}, {"column": "c025", "content": "否"}],
-    #               "value": ["c025"]}, {"zjlx": 1, "list": [{"column": "c026", "content": ""}], "value": ""},
-    #              {"zjlx": 2, "list": [{"column": "c027", "content": ""}], "value": ""}], "isEdit": 1, "tbzt": 0,
-    #     "syxgcs": 3, "tbrq": TIME, "mrtbjzsj": "22:10", "xm": XM, "zzjgmc": XUEYUAN,
-    #     "bdtbslid": todayid, "bdmc": "学生每日健康填报"
-    # }
-
     postUrl = "http://xy.4009955.com/jktb-api/jktb_01_01/homePage/saveForm"
     responseRes = requests.post(postUrl, json=data, headers=header)
     x = "finalRes:" + responseRes.content.decode()
@@ -259,17 +218,10 @@ def submit(jid, jktoken, todayid):
     PROCESS.append(x)
 
 
-# def sendmail(res):
-#     print('正在发送邮件。。。')
-#     # 登录你的邮箱
-#     yag = yagmail.SMTP(user=QQMAIL, password=MAILAUTH, host='smtp.qq.com')
-#     # 发送邮件
-#     yag.send(to=[RECEIVEMAIL], subject=f'{TIME} 工软校园填报情况', contents=f"{res}")
-#     print('完成')
-
-
 def tianbao():
-    while True:
+    maxloop = 3
+    thisloop = 0
+    while thisloop < maxloop:
         try:
             jid = getJESSIONID()
             yzm = getYzm(jid)
@@ -282,16 +234,16 @@ def tianbao():
             submit(jid, jktoken, todayid)
         except IndexError:
             PROCESS.append("❌ fail,retrying......\n")
+            thisloop += 1
             time.sleep(5)
             continue
         else:
             PROCESS.append("✔ success\n填报已完成")
             res = '\n'.join(PROCESS)
-            # sendmail(res)
             with open("result.txt", "w", encoding="utf-8") as Result:
                 Result.write(res)
-            break
-
+            return
+    raise ReportException("3 times failed. Report end.")
 
 if __name__ == '__main__':
     parser = ArgumentParser(description='HITwh疫情上报')

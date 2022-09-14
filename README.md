@@ -19,6 +19,7 @@ TA的博客：[lyri.fun](https://www.lyri.fun/)
 ## 使用方法
 ### 关于OPENID([来源](https://www.lyri.fun/posts/cab45a56/))
 进入**工软校园公众号**，点击**应用中心**，切换到**我的**，如果你是已登录的状态就退出登录，然后跳转进入到这个登录界面
+
 ![获取 openid 的步骤 1](./how-to-enable-actions/image/get_openid1.png)
 
 点**复制链接**，然后查看链接的内容
@@ -33,7 +34,7 @@ TA的博客：[lyri.fun](https://www.lyri.fun/)
 4. 双击`report.bat`即可
 5. P.S. 如果使用Python虚拟环境，可以删除第七行`@REM call .\venv\Scripts\activate.bat`中的`@REM `
 
-### GitHub Action （还在施工中）
+### GitHub Action
 1. `Fork` 仓库
 2. 设置仓库的 Actions Secrets <sup>[如何设置？](./how-to-enable-actions/#添加-Secrets)</sup>  
    填写好如下表中Secrets
@@ -47,8 +48,11 @@ TA的博客：[lyri.fun](https://www.lyri.fun/)
 |  OPENID  |     openid      |
 
 3. 开启 GitHub Actions <sup>[如何开启？](./how-to-enable-actions/#启用-Actions)</sup>
-4. 每天早上 10:00 <sup>02:00 UTC</sup> 定时自动运行  
+4. 每天早上 08:00 <sup>00:00 UTC</sup> 定时自动运行  
    你可以打开 GitHub Actions 执行的全局邮件通知 <sup>[如何开启？](./how-to-enable-actions/#设置邮件提醒)</sup>，包括成功或失败信息
 
 ## 声明
 用户使用过程中输入的账户、密码等信息仅用做登陆认证凭据，脚本未对任何个人信息与登陆凭据进行非法留存、转发等操作，尽情放心使用。欢迎核查
+
+## 推荐
+推荐隔壁项目[Apoois/HITwh-daily-report](https://github.com/Apoois/HITwh-daily-report)，功能更全，架构清晰，作为一名理工男我觉得这太酷了，很符合我对未来生活的想象，科技并带着趣味。
