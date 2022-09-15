@@ -243,7 +243,7 @@ def tianbao():
                 Result.write(res)
             return
 
-        raise ReportException("3 times failed. Report end.")
+    raise ReportException("3 times failed. Report end.")
 
 
 if __name__ == '__main__':
