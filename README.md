@@ -48,7 +48,7 @@ TA的博客：[lyri.fun](https://www.lyri.fun/)
 |  OPENID  |     openid      |
 
 3. 开启 GitHub Actions <sup>[如何开启？](./how-to-enable-actions/#启用-Actions)</sup>
-4. 每天早上 ~~07:40 <sup>07:40 UTC</sup>~~ 不知道什么时候定时自动运行  
+4. 每天早上 ~~07:40 <sup>23:40 UTC</sup>~~ 不知道什么时候定时自动运行  
 > [Note](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule): The `schedule` event can be delayed during periods of high loads of GitHub Actions workflow runs. 
 > High load times include the start of every hour. 
 > To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
