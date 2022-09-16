@@ -48,8 +48,13 @@ TA的博客：[lyri.fun](https://www.lyri.fun/)
 |  OPENID  |     openid      |
 
 3. 开启 GitHub Actions <sup>[如何开启？](./how-to-enable-actions/#启用-Actions)</sup>
-4. 每天早上 08:00 <sup>00:00 UTC</sup> 定时自动运行  
-   你可以打开 GitHub Actions 执行的全局邮件通知 <sup>[如何开启？](./how-to-enable-actions/#设置邮件提醒)</sup>，包括成功或失败信息
+4. 每天早上 ~~07:40 <sup>07:40 UTC</sup>~~ 不知道什么时候定时自动运行  
+> [Note](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule): The `schedule` event can be delayed during periods of high loads of GitHub Actions workflow runs. 
+> High load times include the start of every hour. 
+> To decrease the chance of delay, schedule your workflow to run at a different time of the hour.
+> 西巴，怎么每天延迟两小时运行。
+
+你可以打开 GitHub Actions 执行的全局邮件通知 <sup>[如何开启？](./how-to-enable-actions/#设置邮件提醒)</sup>，包括成功或失败信息
 
 ## 声明
 用户使用过程中输入的账户、密码等信息仅用做登陆认证凭据，脚本未对任何个人信息与登陆凭据进行非法留存、转发等操作，尽情放心使用。欢迎核查
