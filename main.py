@@ -220,7 +220,7 @@ def submit(jid, jktoken, todayid):
 
 
 def tianbao():
-    for _ in range(3):
+    for _ in range(5):
         try:
             jid = getJESSIONID()
             yzm = getYzm(jid)
@@ -243,7 +243,7 @@ def tianbao():
                 Result.write(res)
             return
 
-    raise ReportException("3 times failed. Report end.")
+    raise ReportException("5 times failed. Report end.")
 
 
 if __name__ == '__main__':
