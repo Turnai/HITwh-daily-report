@@ -2,8 +2,10 @@
 
 HITwh 工软系统 <sup>[访问入口](http://xy.4009955.com/jktb/)</sup> 上报脚本
 
-感谢 [@Cheryio](https://github.com/Cheryio) 提供[原始脚本](https://github.com/Cheryio/GRXY_autoSign)和 [idea](https://www.lyri.fun/posts/cab45a56/)。
-TA的博客：[lyri.fun](https://www.lyri.fun/)
+感谢 [@Cheryio](https://github.com/Cheryio) 提供[原始脚本](https://github.com/Cheryio/GRXY_autoSign)和 [idea](https://www.lyri.fun/posts/cab45a56/)。 
+TA的博客：[lyri.fun](https://www.lyri.fun/) 
+
+感谢 [龗云螭 ](https://github.com/Ling-yunchi) 改进报文内容提取部分。 
 
 感谢 [HITsz-daily-report](https://github.com/chh13502/HITsz-daily-report)
 
