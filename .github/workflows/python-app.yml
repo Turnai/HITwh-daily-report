@@ -4,8 +4,8 @@
 name: Python application
 
 on:
-  schedule:
-    - cron: "40 23 * * *"
+#  schedule:
+#    - cron: "40 23 * * *"
   workflow_dispatch:
 
 permissions:
